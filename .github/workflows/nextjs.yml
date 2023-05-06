@@ -52,7 +52,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - run: npm install -g yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
